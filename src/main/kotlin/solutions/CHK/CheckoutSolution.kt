@@ -21,7 +21,7 @@ object CheckoutSolution {
         'H' to Product(10, listOf(Offer(10, 80), Offer(5, 45))),
         'I' to Product(35),
         'J' to Product(60),
-        'K' to Product(80, listOf(Offer(2, 150))),
+        'K' to Product(70, listOf(Offer(2, 150))),
         'L' to Product(90),
         'M' to Product(15),
         'N' to Product(40, listOf(Offer(3, 120, 'M'))),
@@ -29,12 +29,12 @@ object CheckoutSolution {
         'P' to Product(50, listOf(Offer(5, 200))),
         'Q' to Product(30, listOf(Offer(3, 80))),
         'R' to Product(50, listOf(Offer(3, 150, 'Q'))),
-        'S' to Product(30),
+        'S' to Product(20),
         'T' to Product(20),
         'U' to Product(40, listOf(Offer(4,120))),
         'V' to Product(50, listOf(Offer(3, 130), Offer(2, 90))),
         'W' to Product(20),
-        'X' to Product(90),
+        'X' to Product(17),
         'Y' to Product(10),
         'Z' to Product(50)
     )
@@ -119,5 +119,6 @@ object CheckoutSolution {
         return total
     }
 }
+
 
 
