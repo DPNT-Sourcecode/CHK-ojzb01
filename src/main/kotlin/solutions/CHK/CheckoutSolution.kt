@@ -44,7 +44,14 @@ object CheckoutSolution {
 
         var total = 0
 
-        // deduct free items first
+        // process all offers that give other products free
+        productMap.forEach { (productChar, product) ->
+            var count = itemCounts.getOrDefault(productChar, 0)
+            product.offers.forEach { offer ->
+                
+            }
+        }
+
         itemCounts.forEach {
             val productChar = it.key
             var count = it.value
