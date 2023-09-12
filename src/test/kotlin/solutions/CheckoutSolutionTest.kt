@@ -17,6 +17,14 @@ class CheckoutSolutionTest {
         assertEquals(230, CheckoutSolution.checkout("AAAAA"))
         assertEquals(-1, CheckoutSolution.checkout("E"))
         assertEquals(-1, CheckoutSolution.checkout("AE"))
+        assertEquals(230, CheckoutSolution.checkout("AAAAA"))
+        assertEquals(230, CheckoutSolution.checkout("AAAAA"))
+        assertEquals(230, CheckoutSolution.checkout("AAAAA"))
+        assertEquals(230, CheckoutSolution.checkout("AAAAA"))
+        assertEquals(230, CheckoutSolution.checkout("AAAAA"))
+        assertEquals(230, CheckoutSolution.checkout("AAAAA"))
+        assertEquals(230, CheckoutSolution.checkout("AAAAA"))
+
 
     }
 }

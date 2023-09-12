@@ -17,9 +17,10 @@ object CheckoutSolution {
         }
 
         val aTotal = calcATotal(itemCounts['A']!!)
-        val bTotal = (itemCounts['B']!! / 2) * 45 + (itemCounts['B']!! % 2) * 30
+        val bTotal = calcBTotal(itemCounts['B']!!, itemCounts['E']!!)
         val cTotal = itemCounts['C']!! * 20
         val dTotal = itemCounts['D']!! * 15
+        val eTotal = itemCounts['E']!! * 40
 
         return aTotal + bTotal + cTotal + dTotal
     }
@@ -35,6 +36,12 @@ object CheckoutSolution {
 
     fun calcBTotal(bCount: Int, eCount: Int): Int {
         val bFreeCount = eCount / 2
-        
+        val bChargeable = bCount - bFreeCount
+        if (bChargeable <= 0) return 0
+
+        val offer = bChargeable / 2
+        val remaining = bChargeable % 2
+
+        return offer * 45 + remaining * 30
     }
 }
