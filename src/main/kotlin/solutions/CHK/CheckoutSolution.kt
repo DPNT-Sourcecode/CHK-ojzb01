@@ -45,11 +45,18 @@ object CheckoutSolution {
         var total = 0
 
         itemCounts.forEach {
-            val product = productMap[it.key]
+            val productChar = it.key
+            var count = it.value
+            val product = productMap[productChar]
             val offers = product?.offers
 
             offers.forEach { offer ->
-                
+                while (count > offer.requiredCount) {
+                    total += offer.price
+                    count -= offer.requiredCount
+
+                    if (offer.freeItem != null) 
+                }
             }
         }
 
@@ -90,4 +97,5 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
 
