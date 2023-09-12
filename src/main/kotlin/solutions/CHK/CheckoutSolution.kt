@@ -1,5 +1,8 @@
 package solutions.CHK
 
+data class Product(val sku: String, val price: Int, val offers: List<Offer>)
+data class Offer(val requiredCount: Int, val price: Int)
+
 object CheckoutSolution {
     fun checkout(skus: String): Int {
         if (skus.any { it !in "ABCDEF" }) return -1
