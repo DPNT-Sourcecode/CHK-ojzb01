@@ -8,7 +8,8 @@ object CheckoutSolution {
             'A' to 0,
             'B' to 0,
             'C' to 0,
-            'D' to 0
+            'D' to 0,
+            'E' to 0
         )
 
         skus.forEach {
