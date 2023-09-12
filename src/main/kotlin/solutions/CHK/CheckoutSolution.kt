@@ -1,7 +1,13 @@
 package solutions.CHK
 
 data class Product(val price: Int, val offers: List<Offer> = listOf())
-data class Offer(val requiredCount: Int, val price: Int, val freeItem: Char? = null, val freeItemCount: Int = 1)
+data class Offer(
+    val requiredCount: Int,
+    val price: Int,
+    val freeItem: Char? = null,
+    val freeItemCount: Int = 1,
+    val groupItems: List<Char>? = null
+)
 
 object CheckoutSolution {
     private var productMap = mutableMapOf<Char, Product>(
@@ -34,7 +40,7 @@ object CheckoutSolution {
     )
 
     fun checkout(skus: String): Int {
-
+        val 
         val itemCounts = mutableMapOf<Char, Int>()
 
         skus.forEach {
@@ -80,6 +86,3 @@ object CheckoutSolution {
         return total
     }
 }
-
-
-
