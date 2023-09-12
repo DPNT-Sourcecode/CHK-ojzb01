@@ -56,21 +56,20 @@ object CheckoutSolution {
 
     private fun processRegularDiscountsAndRemainingItems(itemCounts: MutableMap<Char, Int>): Int {
         var total = 0
-        itemCounts.forEach {
-            val productChar = it.key
-            var count = it.value
+        itemCounts.forEach { (productChar, count) ->
             val product = productMap[productChar]!!
 
             product.offers
                 .filter { it.groupItems == null && it.freeItem == null }
-                .sortedByDescending { it.requiredCount }
+                .sortedByDescending { o -> o.requiredCount }
                 .forEach { offer ->
                     total += offer.price * (count /offer.requiredCount)
-                    itemCounts[productChar] = offer.requiredCount
+                    itemCounts[productChar] = count % offer.requiredCount
             }
 
             total += count * product.price
         }
+        return total
     }
 
     private fun processGroupDiscounts(itemCounts: MutableMap<Char, Int>): Int {
