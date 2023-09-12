@@ -51,7 +51,7 @@ object CheckoutSolution {
             val offers = product?.offers
 
             offers?.forEach { offer ->
-                while (count > offer.requiredCount) {
+                while (count >= offer.requiredCount) {
                     total += offer.price
                     count -= offer.requiredCount
 
@@ -66,6 +66,7 @@ object CheckoutSolution {
         return total
     }
 }
+
 
 
 

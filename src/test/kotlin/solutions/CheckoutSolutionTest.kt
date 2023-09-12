@@ -8,10 +8,10 @@ class CheckoutSolutionTest {
 
     @Test
     fun testCheckout() {
-//        assertEquals(0, CheckoutSolution.checkout(""))
-//        assertEquals(50, CheckoutSolution.checkout("A"))
-//        assertEquals(80, CheckoutSolution.checkout("AB"))
-//        assertEquals(95, CheckoutSolution.checkout("ABD"))
+        assertEquals(0, CheckoutSolution.checkout(""))
+        assertEquals(50, CheckoutSolution.checkout("A"))
+        assertEquals(80, CheckoutSolution.checkout("AB"))
+        assertEquals(95, CheckoutSolution.checkout("ABD"))
         assertEquals(130, CheckoutSolution.checkout("AAA"))
         assertEquals(160, CheckoutSolution.checkout("AAAB"))
         assertEquals(200, CheckoutSolution.checkout("AAAAA"))
@@ -30,3 +30,4 @@ class CheckoutSolutionTest {
 
     }
 }
+
