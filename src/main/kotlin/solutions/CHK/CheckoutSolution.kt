@@ -2,14 +2,15 @@ package solutions.CHK
 
 object CheckoutSolution {
     fun checkout(skus: String): Int {
-        if (skus.any { it !in "ABCDE" }) return -1
+        if (skus.any { it !in "ABCDEF" }) return -1
 
         val itemCounts = mutableMapOf<Char, Int>(
             'A' to 0,
             'B' to 0,
             'C' to 0,
             'D' to 0,
-            'E' to 0
+            'E' to 0,
+            'F' to 0
         )
 
         skus.forEach {
@@ -21,8 +22,13 @@ object CheckoutSolution {
         val cTotal = itemCounts['C']!! * 20
         val dTotal = itemCounts['D']!! * 15
         val eTotal = itemCounts['E']!! * 40
+        val fTotal = calcFTotal(itemCounts['F']!!)
 
         return aTotal + bTotal + cTotal + dTotal + eTotal
+    }
+
+    private fun calcFTotal(count: Int): Int {
+        TODO("Not yet implemented")
     }
 
     fun calcATotal(count: Int): Int {
@@ -45,3 +51,4 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
