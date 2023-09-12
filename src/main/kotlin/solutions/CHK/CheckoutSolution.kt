@@ -34,20 +34,15 @@ object CheckoutSolution {
     )
 
     fun checkout(skus: String): Int {
-        if (skus.any { it !in "ABCDEF" }) return -1
 
-        val itemCounts = mutableMapOf<Char, Int>(
-            'A' to 0,
-            'B' to 0,
-            'C' to 0,
-            'D' to 0,
-            'E' to 0,
-            'F' to 0
-        )
+        val itemCounts = mutableMapOf<Char, Int>()
 
         skus.forEach {
-            itemCounts[it] = itemCounts[it]!! + 1
+            if(!productMap.containsKey(it)) return -1
+            itemCounts[it] = itemCounts.getOrDefault(it, 0) + 1
         }
+
+        var total = 0
 
         val aTotal = calcATotal(itemCounts['A']!!)
         val bTotal = calcBTotal(itemCounts['B']!!, itemCounts['E']!!)
@@ -86,9 +81,3 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
-
-
-
-
-
-
