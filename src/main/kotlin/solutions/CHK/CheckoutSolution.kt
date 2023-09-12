@@ -10,5 +10,7 @@ object CheckoutSolution {
             'C' to 0,
             'D' to 0
         )
+
+        val aTotal = (itemCounts['A']!! / 3) * 130 + (itemCounts['A']!! % 3) * 50
     }
 }
