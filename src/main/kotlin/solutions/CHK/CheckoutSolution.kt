@@ -50,14 +50,17 @@ object CheckoutSolution {
             val product = productMap[productChar]
             val offers = product?.offers
 
-            offers.forEach { offer ->
+            offers?.forEach { offer ->
                 while (count > offer.requiredCount) {
                     total += offer.price
                     count -= offer.requiredCount
 
-                    if (offer.freeItem != null) 
+                    if (offer.freeItem != null)
+                        itemCounts[offer.freeItem] = itemCounts[offer.freeItem] - offer.freeItemCount
                 }
             }
+
+            total += count * product!!.price
         }
 
         val aTotal = calcATotal(itemCounts['A']!!)
@@ -97,5 +100,6 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
 
 
