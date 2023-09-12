@@ -6,30 +6,30 @@ data class Offer(val requiredCount: Int, val price: Int)
 object CheckoutSolution {
     private var productMap = mutableMapOf<Char, Product>(
         'A' to Product(50, listOf(Offer(5,200), Offer(3, 130))),
-        'B' to Product(50),
-        'C' to Product(50),
-        'D' to Product(50),
-        'E' to Product(50),
-        'F' to Product(50),
-        'G' to Product(50),
-        'H' to Product(50),
-        'I' to Product(50),
-        'J' to Product(50),
-        'K' to Product(50),
-        'L' to Product(50),
-        'M' to Product(50),
-        'N' to Product(50),
-        'O' to Product(50),
+        'B' to Product(30, listOf(Offer(2, 45))),
+        'C' to Product(20),
+        'D' to Product(15),
+        'E' to Product(40),
+        'F' to Product(10),
+        'G' to Product(20),
+        'H' to Product(10),
+        'I' to Product(35),
+        'J' to Product(60),
+        'K' to Product(80),
+        'L' to Product(90),
+        'M' to Product(15),
+        'N' to Product(40),
+        'O' to Product(10),
         'P' to Product(50),
-        'Q' to Product(50),
+        'Q' to Product(30),
         'R' to Product(50),
-        'S' to Product(50),
-        'T' to Product(50),
-        'U' to Product(50),
+        'S' to Product(30),
+        'T' to Product(20),
+        'U' to Product(40),
         'V' to Product(50),
-        'W' to Product(50),
-        'X' to Product(50),
-        'Y' to Product(50),
+        'W' to Product(20),
+        'X' to Product(90),
+        'Y' to Product(10),
         'Z' to Product(50),
 
 
@@ -88,6 +88,7 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
 
 
 
