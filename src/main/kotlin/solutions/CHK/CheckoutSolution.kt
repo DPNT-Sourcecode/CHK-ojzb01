@@ -62,7 +62,6 @@ object CheckoutSolution {
                         }
 
                         itemCounts[offer.freeItem] = remainingFreeItemCount
-                        itemCounts[productChar] = count - offer.requiredCount
                         total += offer.price
 
                         count -= offer.requiredCount
@@ -80,12 +79,9 @@ object CheckoutSolution {
             val offers = product?.offers
 
             offers?.forEach { offer ->
-                while (count >= offer.requiredCount) {
+                while (count >= offer.requiredCount && offer.freeItem == null) {
                     total += offer.price
                     count -= offer.requiredCount
-
-                    if (offer.freeItem != null)
-                        itemCounts[offer.freeItem] = itemCounts.getOrDefault(offer.freeItem, 0) - offer.freeItemCount
                 }
             }
 
@@ -95,9 +91,3 @@ object CheckoutSolution {
         return total
     }
 }
-
-
-
-
-
-
