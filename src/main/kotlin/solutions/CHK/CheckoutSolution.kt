@@ -56,7 +56,9 @@ object CheckoutSolution {
 
     private fun processRegularDiscountsAndRemainingItems(itemCounts: MutableMap<Char, Int>): Int {
         var total = 0
-        itemCounts.forEach { (productChar, count) ->
+        itemCounts.forEach { p ->
+            val productChar = p.key
+            var count = p.value
             val product = productMap[productChar]!!
 
             product.offers
@@ -65,7 +67,7 @@ object CheckoutSolution {
                 .forEach { offer ->
                     while(count >= offer.requiredCount) {
                         total += offer.price
-                        count -= 
+                        count -= offer.requiredCount
                     }
                 }
 
@@ -103,19 +105,19 @@ object CheckoutSolution {
     private fun processFreeItems(itemCounts: MutableMap<Char, Int>): Int {
         var total = 0
         productMap.forEach { (productChar, product) ->
-            val offersWithFreeItems = product.offers.filter { it.freeItem != null }
-            offersWithFreeItems.forEach { offer ->
-                val freeItemAvailableCount = itemCounts.getOrDefault(offer.freeItem, 0)
-                if ((itemCounts[productChar]
-                        ?: 0) >= offer.requiredCount && freeItemAvailableCount >= offer.freeItemCount
-                ) {
-                    total += offer.price * itemCounts[productChar]!! / offer.requiredCount
-                    itemCounts[offer.freeItem!!] = maxOf(0, freeItemAvailableCount - offer.freeItemCount)
-                    itemCounts[productChar] = itemCounts[productChar]!! % offer.requiredCount
+            var count = itemCounts.getOrDefault(productChar, 0)
+
+            product.offers.filter { it.freeItem != null }.sortedByDescending { it.requiredCount }.forEach { offer ->
+                while (count >= offer.requiredCount && (itemCounts[offer.freeItem] ?: 0) >= offer.freeItemCount) {
+                    total += offer.price
+                    count -= offer.requiredCount
+                    itemCounts[offer.freeItem!!] = maxOf(0, itemCounts[offer.freeItem]!! - offer.freeItemCount)
                 }
             }
+            itemCounts[productChar] = count
         }
         return total
     }
 }
+
 
