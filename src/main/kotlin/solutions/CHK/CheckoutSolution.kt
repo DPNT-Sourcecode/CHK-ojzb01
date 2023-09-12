@@ -76,7 +76,14 @@ object CheckoutSolution {
     private fun processGroupDiscounts(itemCounts: MutableMap<Char, Int>): Int {
         val total = 0
         productMap.values.forEach { product ->
-            
+            val groupOffers = product.offers.filter { it.groupItems != null }
+            groupOffers.forEach { offer ->
+                val eligibleGroupItems = offer.groupItems!!.associateWith {
+                    itemCounts.getOrDefault(it, 0)
+                }.toMutableMap()
+                while (eligibleGroupItems.values.sum() >= offer.groupItems)
+            }
+
         }
     }
 
@@ -98,6 +105,7 @@ object CheckoutSolution {
         return total
     }
 }
+
 
 
 
