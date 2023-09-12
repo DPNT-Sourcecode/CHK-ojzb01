@@ -4,6 +4,7 @@ data class Product(val sku: String, val price: Int, val offers: List<Offer>)
 data class Offer(val requiredCount: Int, val price: Int)
 
 object CheckoutSolution {
+    private var productMap = mutableMapOf<Char, Product>()
     fun checkout(skus: String): Int {
         if (skus.any { it !in "ABCDEF" }) return -1
 
@@ -57,3 +58,4 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
