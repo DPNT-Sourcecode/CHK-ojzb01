@@ -1,7 +1,8 @@
 package solutions.HLO
 
 object HelloSolution {
-    fun hello(friendName: String): String = "Hello, World!"
+    fun hello(friendName: String): String = "Hello, $friendName!"
 }
+
 
 
