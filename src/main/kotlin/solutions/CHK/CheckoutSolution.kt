@@ -62,28 +62,12 @@ object CheckoutSolution {
             }
         }
 
-        itemCounts.forEach {(productChar, count) ->
-            val product = productMap[productChar]
-
-            product?.offers?.forEach { offer ->
-                if(offer.freeItem != null) {
-                    while (count >= offer.requiredCount && offer.freeItem == null) {
-                        total += offer.price
-                        count -= offer.requiredCount
-                    }
-                }
-            }
-
-            total += count * product!!.price
-        }
-
         itemCounts.forEach {
             val productChar = it.key
             var count = it.value
             val product = productMap[productChar]
-            val offers = product?.offers
 
-            offers?.forEach { offer ->
+            product?.offers?.forEach { offer ->
                 while (count >= offer.requiredCount && offer.freeItem == null) {
                     total += offer.price
                     count -= offer.requiredCount
@@ -96,5 +80,6 @@ object CheckoutSolution {
         return total
     }
 }
+
 
 
