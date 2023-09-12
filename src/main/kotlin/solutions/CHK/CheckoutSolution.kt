@@ -40,15 +40,17 @@ object CheckoutSolution {
     )
 
     fun checkout(skus: String): Int {
-        val 
-        val itemCounts = mutableMapOf<Char, Int>()
+        val itemCounts = skus.groupingBy { it }.eachCount().toMutableMap()
 
-        skus.forEach {
-            if(!productMap.containsKey(it)) return -1
-            itemCounts[it] = itemCounts.getOrDefault(it, 0) + 1
-        }
+        if (itemCounts.keys.any { it !in productMap }) return -1
 
         var total = 0
+
+        total += processFreeItems(itemCounts)
+        total += processGroupDiscounts(itemCounts)
+        total += processRegularDiscountsAndRemainingItems(itemCounts)
+
+        
 
         // process all offers that give other products free
         productMap.forEach { (productChar, product) ->
