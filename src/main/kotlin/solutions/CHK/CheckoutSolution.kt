@@ -85,7 +85,14 @@ object CheckoutSolution {
                     total += offer.price
 
                     var itemsNeededForDiscount = offer.requiredCount
-                    for ((item, availabeCount) in eligibleGroupItems.entries.sortedByDescending { productMap[it.] })
+                    for ((item, availabeCount) in eligibleGroupItems.entries.sortedByDescending {
+                        productMap[it.key]!!.price
+                    }) {
+                        val itemsToUseForDiscount = minOf(availabeCount, itemsNeededForDiscount)
+                        eligibleGroupItems[item] = availabeCount - itemsToUseForDiscount
+                        itemCounts[item] = itemCounts.getOrDefault(item, 0) - itemsToUseForDiscount
+                        
+                    }
 
                 }
             }
@@ -111,6 +118,7 @@ object CheckoutSolution {
         return total
     }
 }
+
 
 
 
