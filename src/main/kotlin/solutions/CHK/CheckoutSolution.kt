@@ -45,7 +45,12 @@ object CheckoutSolution {
         var total = 0
 
         itemCounts.forEach {
-            val product = 
+            val product = productMap[it.key]
+            val offers = product?.offers
+
+            offers.forEach { offer ->
+                
+            }
         }
 
         val aTotal = calcATotal(itemCounts['A']!!)
@@ -85,3 +90,4 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
