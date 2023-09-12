@@ -63,9 +63,11 @@ object CheckoutSolution {
                 .filter { it.groupItems == null && it.freeItem == null }
                 .sortedByDescending { o -> o.requiredCount }
                 .forEach { offer ->
-                    total += offer.price * (count /offer.requiredCount)
-                    itemCounts[productChar] = count % offer.requiredCount
-            }
+                    while(count >= offer.requiredCount) {
+                        total += offer.price
+                        count -= 
+                    }
+                }
 
             total += count * product.price
         }
@@ -116,3 +118,4 @@ object CheckoutSolution {
         return total
     }
 }
+
