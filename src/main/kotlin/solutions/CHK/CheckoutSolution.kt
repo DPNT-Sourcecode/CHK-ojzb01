@@ -54,5 +54,3 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
-
-
