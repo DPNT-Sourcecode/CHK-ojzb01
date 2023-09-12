@@ -11,6 +11,10 @@ object CheckoutSolution {
             'D' to 0
         )
 
+        skus.forEach {
+            
+        }
+
         val aTotal = (itemCounts['A']!! / 3) * 130 + (itemCounts['A']!! % 3) * 50
         val bTotal = (itemCounts['B']!! / 2) * 45 + (itemCounts['B']!! % 2) * 30
         val cTotal = itemCounts['C']!! * 20
