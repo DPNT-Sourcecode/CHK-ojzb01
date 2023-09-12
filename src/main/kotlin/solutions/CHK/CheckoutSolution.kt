@@ -73,11 +73,17 @@ object CheckoutSolution {
         return total
     }
 
+    private fun processGroupDiscounts(itemCounts: MutableMap<Char, Int>): Int {
+        val total = 0
+        productMap.values.forEach { product ->
+            
+        }
+    }
+
     private fun processFreeItems(itemCounts: MutableMap<Char, Int>): Int {
         var total = 0
         productMap.forEach { (productChar, product) ->
             val offersWithFreeItems = product.offers.filter { it.freeItem != null }
-            var count = itemCounts.getOrDefault(productChar, 0)
             offersWithFreeItems.forEach { offer ->
                 val freeItemAvailableCount = itemCounts.getOrDefault(offer.freeItem, 0)
                 if ((itemCounts[productChar]
@@ -85,9 +91,11 @@ object CheckoutSolution {
                 ) {
                     total += offer.price * itemCounts[productChar]!! / offer.requiredCount
                     itemCounts[offer.freeItem!!] = maxOf(0, freeItemAvailableCount - offer.freeItemCount)
+                    itemCounts[productChar] = itemCounts[productChar]!! % offer.requiredCount
                 }
             }
         }
+        return total
     }
 }
 
