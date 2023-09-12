@@ -29,14 +29,14 @@ object CheckoutSolution {
         'P' to Product(50, listOf(Offer(5, 200))),
         'Q' to Product(30, listOf(Offer(3, 80))),
         'R' to Product(50, listOf(Offer(3, 150, 'Q'))),
-        'S' to Product(20),
-        'T' to Product(20),
+        'S' to Product(20, listOf(Offer(3, 45, groupItems = listOf('S', 'T', 'X', 'Y', 'Z')))),
+        'T' to Product(20, listOf(Offer(3, 45, groupItems = listOf('S', 'T', 'X', 'Y', 'Z')))),
         'U' to Product(40, listOf(Offer(4,120))),
         'V' to Product(50, listOf(Offer(3, 130), Offer(2, 90))),
         'W' to Product(20),
-        'X' to Product(17),
-        'Y' to Product(10),
-        'Z' to Product(50)
+        'X' to Product(17, listOf(Offer(3, 45, groupItems = listOf('S', 'T', 'X', 'Y', 'Z')))),
+        'Y' to Product(20, listOf(Offer(3, 45, groupItems = listOf('S', 'T', 'X', 'Y', 'Z')))),
+        'Z' to Product(21, listOf(Offer(3, 45, groupItems = listOf('S', 'T', 'X', 'Y', 'Z')))),
     )
 
     fun checkout(skus: String): Int {
@@ -119,6 +119,7 @@ object CheckoutSolution {
         return total
     }
 }
+
 
 
 
