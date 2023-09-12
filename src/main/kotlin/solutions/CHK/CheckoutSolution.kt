@@ -76,21 +76,17 @@ object CheckoutSolution {
     private fun processFreeItems(itemCounts: MutableMap<Char, Int>): Int {
         var total = 0
         productMap.forEach { (productChar, product) ->
-            val offersWithFreeItems = 
+            val offersWithFreeItems = product.offers.filter { it.freeItem != null }
             var count = itemCounts.getOrDefault(productChar, 0)
-            product.offers.forEach { offer ->
-                if(offer.freeItem != null) {
-                    while (count >= offer.requiredCount) {
-                        val remainingFreeItemCount = itemCounts.getOrDefault(offer.freeItem, 0) - offer.freeItemCount
-                        if (remainingFreeItemCount < 0) break
-
-                        itemCounts[offer.freeItem] = remainingFreeItemCount
-                        count -= offer.requiredCount
-                        total += offer.price
-                    }
-                    itemCounts[productChar] = count
+            offersWithFreeItems.forEach { offer ->
+                val freeItemAvailableCount = itemCounts.getOrDefault(offer.freeItem, 0)
+                if ((itemCounts[productChar]
+                        ?: 0) >= offer.requiredCount && freeItemAvailableCount >= offer.freeItemCount
+                ) {
+                    total += offer.price * 
                 }
             }
         }
     }
 }
+
