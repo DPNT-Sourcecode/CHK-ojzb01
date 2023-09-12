@@ -56,50 +56,17 @@ object CheckoutSolution {
                     count -= offer.requiredCount
 
                     if (offer.freeItem != null)
-                        itemCounts[offer.freeItem] = itemCounts[offer.freeItem] - offer.freeItemCount
+                        itemCounts[offer.freeItem] = itemCounts.getOrDefault(offer.freeItem, 0) - offer.freeItemCount
                 }
             }
 
             total += count * product!!.price
         }
 
-        val aTotal = calcATotal(itemCounts['A']!!)
-        val bTotal = calcBTotal(itemCounts['B']!!, itemCounts['E']!!)
-        val cTotal = itemCounts['C']!! * 20
-        val dTotal = itemCounts['D']!! * 15
-        val eTotal = itemCounts['E']!! * 40
-        val fTotal = calcFTotal(itemCounts['F']!!)
-
-        return aTotal + bTotal + cTotal + dTotal + eTotal + fTotal
-    }
-
-    private fun calcFTotal(count: Int): Int {
-        val offer = count / 3
-        val remaining = count % 3
-
-        return offer * 20 + remaining * 10
-    }
-
-    fun calcATotal(count: Int): Int {
-        val offer1Count = count / 5
-        val remainingAfterOffer1 = count % 5
-        val offer2Count = remainingAfterOffer1 / 3
-        val remainingAfterOffer2 = remainingAfterOffer1 % 3
-
-        return offer1Count * 200 + offer2Count * 130 + remainingAfterOffer2 * 50
-    }
-
-    fun calcBTotal(bCount: Int, eCount: Int): Int {
-        val bFreeCount = eCount / 2
-        val bChargeable = bCount - bFreeCount
-        if (bChargeable <= 0) return 0
-
-        val offer = bChargeable / 2
-        val remaining = bChargeable % 2
-
-        return offer * 45 + remaining * 30
+        return total
     }
 }
+
 
 
 
