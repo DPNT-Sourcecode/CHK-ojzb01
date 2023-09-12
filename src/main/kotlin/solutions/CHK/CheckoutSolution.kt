@@ -12,5 +12,10 @@ object CheckoutSolution {
         )
 
         val aTotal = (itemCounts['A']!! / 3) * 130 + (itemCounts['A']!! % 3) * 50
+        val bTotal = (itemCounts['B']!! / 2) * 45 + (itemCounts['B']!! % 2) * 30
+        val cTotal = itemCounts['C']!! * 20
+        val dTotal = itemCounts['D']!! * 15
+
+        return aTotal + bTotal + cTotal + dTotal
     }
 }
