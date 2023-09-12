@@ -2,7 +2,7 @@ package solutions.CHK
 
 object CheckoutSolution {
     fun checkout(skus: String): Int {
-        if (skus.any { it !in "ABCD" }) return -1
+        if (skus.any { it !in "ABCDE" }) return -1
 
         val itemCounts = mutableMapOf<Char, Int>(
             'A' to 0,
@@ -22,7 +22,7 @@ object CheckoutSolution {
         val dTotal = itemCounts['D']!! * 15
         val eTotal = itemCounts['E']!! * 40
 
-        return aTotal + bTotal + cTotal + dTotal
+        return aTotal + bTotal + cTotal + dTotal + eTotal
     }
 
     fun calcATotal(count: Int): Int {
