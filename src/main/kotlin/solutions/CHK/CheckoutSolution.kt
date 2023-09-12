@@ -1,7 +1,7 @@
 package solutions.CHK
 
 data class Product(val price: Int, val offers: List<Offer> = listOf())
-data class Offer(val requiredCount: Int, val price: Int)
+data class Offer(val requiredCount: Int, val price: Int, val freeItem: Char? = null, val freeItemCount: Int = 1)
 
 object CheckoutSolution {
     private var productMap = mutableMapOf<Char, Product>(
@@ -88,6 +88,7 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
 
 
 
