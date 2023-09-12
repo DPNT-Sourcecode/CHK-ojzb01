@@ -83,10 +83,12 @@ object CheckoutSolution {
                 if ((itemCounts[productChar]
                         ?: 0) >= offer.requiredCount && freeItemAvailableCount >= offer.freeItemCount
                 ) {
-                    total += offer.price * 
+                    total += offer.price * itemCounts[productChar]!! / offer.requiredCount
+                    itemCounts[offer.freeItem] = maxOf(0, freeItemAvailableCount - offer.freeItemCount)
                 }
             }
         }
     }
 }
+
 
