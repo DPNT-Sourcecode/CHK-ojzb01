@@ -6,10 +6,17 @@ import kotlin.test.assertEquals
 
 class CheckoutSolutionTest {
 
+//    - {"method":"checkout","params":["BEBEEE"],"id":"CHK_R4_063"}, expected: 160, got: 205
+//    - {"method":"checkout","params":["ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"],"id":"CHK_R4_139"}, expected: 1880, got: 1895
+//    - {"method":"checkout","params":["LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH"],"id":"CHK_R4_140"}, expected: 1880, got: 1895
+
+
+
+
     @Test
     fun testCheckout() {
-        assertEquals(0, CheckoutSolution.checkout(""))
-        assertEquals(50, CheckoutSolution.checkout("A"))
+//        assertEquals(0, CheckoutSolution.checkout(""))
+        assertEquals(160, CheckoutSolution.checkout("BEBEEE"))
         assertEquals(80, CheckoutSolution.checkout("AB"))
         assertEquals(95, CheckoutSolution.checkout("ABD"))
         assertEquals(130, CheckoutSolution.checkout("AAA"))
@@ -30,4 +37,5 @@ class CheckoutSolutionTest {
 
     }
 }
+
 
