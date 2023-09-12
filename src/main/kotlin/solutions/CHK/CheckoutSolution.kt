@@ -23,4 +23,11 @@ object CheckoutSolution {
 
         return aTotal + bTotal + cTotal + dTotal
     }
+
+    fun calcATotal(count: Int): Int {
+        val offer1Count = count / 5
+        val remainingAfterOffer1 = count % 5
+        val offer2 = remainingAfterOffer1 / 3
+        val remainingAfterOffer2 =remainingAfterOffer1 % 3
+    }
 }
