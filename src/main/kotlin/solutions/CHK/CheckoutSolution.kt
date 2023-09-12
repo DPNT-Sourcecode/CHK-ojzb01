@@ -44,6 +44,35 @@ object CheckoutSolution {
 
         var total = 0
 
+        // deduct free items first
+        itemCounts.forEach {
+            val productChar = it.key
+            var count = it.value
+            val product = productMap[productChar]
+            val offers = product?.offers
+
+            offers?.forEach { offer ->
+                if(offer.freeItem != null) {
+                    while (count >= offer.requiredCount) {
+                        val remainingFreeItemCount = itemCounts.getOrDefault(offer.freeItem, 0) - offer.freeItemCount
+
+                        // If we don't have enough free items, rollback and break
+                        if (remainingFreeItemCount < 0) {
+                            break
+                        }
+
+                        itemCounts[offer.freeItem] = remainingFreeItemCount
+                        itemCounts[productChar] = count - offer.requiredCount
+                        total += offer.price
+
+                        count -= offer.requiredCount
+                    }
+                }
+            }
+
+            total += count * product!!.price
+        }
+
         itemCounts.forEach {
             val productChar = it.key
             var count = it.value
@@ -66,6 +95,7 @@ object CheckoutSolution {
         return total
     }
 }
+
 
 
 
