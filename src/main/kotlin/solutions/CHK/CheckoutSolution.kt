@@ -1,10 +1,13 @@
 package solutions.CHK
 
-data class Product(val sku: String, val price: Int, val offers: List<Offer>)
+data class Product(val price: Int, val offers: List<Offer> = listOf())
 data class Offer(val requiredCount: Int, val price: Int)
 
 object CheckoutSolution {
-    private var productMap = mutableMapOf<Char, Product>()
+    private var productMap = mutableMapOf<Char, Product>(
+    'A' to Product(50, listOf(Offer(5,200), Offer(3, 130)))
+    )
+
     fun checkout(skus: String): Int {
         if (skus.any { it !in "ABCDEF" }) return -1
 
@@ -58,4 +61,5 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
 
