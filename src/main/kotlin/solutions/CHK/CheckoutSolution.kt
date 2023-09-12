@@ -5,8 +5,35 @@ data class Offer(val requiredCount: Int, val price: Int)
 
 object CheckoutSolution {
     private var productMap = mutableMapOf<Char, Product>(
-    'A' to Product(50, listOf(Offer(5,200), Offer(3, 130)))
-    )
+        'A' to Product(50, listOf(Offer(5,200), Offer(3, 130))),
+        'B' to Product(50),
+        'C' to Product(50),
+        'D' to Product(50),
+        'E' to Product(50),
+        'F' to Product(50),
+        'G' to Product(50),
+        'H' to Product(50),
+        'I' to Product(50),
+        'J' to Product(50),
+        'K' to Product(50),
+        'L' to Product(50),
+        'M' to Product(50),
+        'N' to Product(50),
+        'O' to Product(50),
+        'P' to Product(50),
+        'Q' to Product(50),
+        'R' to Product(50),
+        'S' to Product(50),
+        'T' to Product(50),
+        'U' to Product(50),
+        'V' to Product(50),
+        'W' to Product(50),
+        'X' to Product(50),
+        'Y' to Product(50),
+        'Z' to Product(50),
+
+
+        )
 
     fun checkout(skus: String): Int {
         if (skus.any { it !in "ABCDEF" }) return -1
@@ -61,5 +88,6 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
 
 
