@@ -24,11 +24,14 @@ object CheckoutSolution {
         val eTotal = itemCounts['E']!! * 40
         val fTotal = calcFTotal(itemCounts['F']!!)
 
-        return aTotal + bTotal + cTotal + dTotal + eTotal
+        return aTotal + bTotal + cTotal + dTotal + eTotal + fTotal
     }
 
     private fun calcFTotal(count: Int): Int {
-        TODO("Not yet implemented")
+        val offer = count / 3
+        val remaining = count % 3
+
+        return offer * 20 + remaining * 10
     }
 
     fun calcATotal(count: Int): Int {
@@ -51,4 +54,5 @@ object CheckoutSolution {
         return offer * 45 + remaining * 30
     }
 }
+
 
