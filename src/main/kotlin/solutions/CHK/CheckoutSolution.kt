@@ -21,7 +21,7 @@ object CheckoutSolution {
         'H' to Product(10, listOf(Offer(10, 80), Offer(5, 45))),
         'I' to Product(35),
         'J' to Product(60),
-        'K' to Product(70, listOf(Offer(2, 150))),
+        'K' to Product(70, listOf(Offer(2, 120))),
         'L' to Product(90),
         'M' to Product(15),
         'N' to Product(40, listOf(Offer(3, 120, 'M'))),
@@ -119,7 +119,3 @@ object CheckoutSolution {
         return total
     }
 }
-
-
-
-
