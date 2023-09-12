@@ -44,6 +44,10 @@ object CheckoutSolution {
 
         var total = 0
 
+        itemCounts.forEach {
+            val product = 
+        }
+
         val aTotal = calcATotal(itemCounts['A']!!)
         val bTotal = calcBTotal(itemCounts['B']!!, itemCounts['E']!!)
         val cTotal = itemCounts['C']!! * 20
